@@ -1,13 +1,12 @@
 var __ViewerFrame;
-var __ViewerDomain = "https://pdfviewer.kauffmann.nl";
-var __ViewerPath = "/web/viewer.html";
+var __ViewerDomain = "http://pdfviewer.kauffmann.nl";
 
 function InitializeControl(controlId) {
     window.addEventListener("message", onMessage, false);
     var controlAddIn = document.getElementById(controlId);
     controlAddIn.innerHTML = '<iframe id="viewer" style="border-style: none; margin: 0px; padding: 0px; height: 100%; width: 100%" allowFullScreen></iframe>'
     __ViewerFrame = document.getElementById('viewer');
-    __ViewerFrame.src = __ViewerDomain + __ViewerPath;
+    __ViewerFrame.src = __ViewerDomain + "/web/viewer.html?file=";
 }
 
 function onMessage(event) {

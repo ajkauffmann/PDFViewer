@@ -255,6 +255,10 @@ function webViewerLoad() {
   window.PDFViewerApplication = pdfjsWebApp.PDFViewerApplication;
   window.PDFViewerApplicationOptions = pdfjsWebAppOptions.AppOptions;
   pdfjsWebApp.PDFViewerApplication.run(config);
+  // ## Business Central Integration ##
+  var evt = new Event("webviewerloaded", {"bubbles":true});
+  document.dispatchEvent(evt);
+  // ##################################
 }
 if (document.readyState === 'interactive' || document.readyState === 'complete') {
   webViewerLoad();
@@ -4350,7 +4354,7 @@ var defaultOptions = {
     kind: OptionKind.VIEWER
   },
   defaultUrl: {
-    value: 'compressed.tracemonkey-pldi-09.pdf',
+    value: '',
     kind: OptionKind.VIEWER
   },
   defaultZoomValue: {
