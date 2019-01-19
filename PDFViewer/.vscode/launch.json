@@ -1,0 +1,16 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "al",
+            "request": "launch",
+            "name": "Your own server",
+            "server": "http://bcsandbox",
+            "serverInstance": "NAV",
+            "authentication": "UserPassword",
+            "startupObjectId": 190,
+            "startupObjectType": "Page",
+            "breakOnError": true
+        }
+    ]
+}

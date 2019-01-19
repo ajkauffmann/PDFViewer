@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "PDFViewer"
+		},
+		{
+			"path": "pdfjs-2.0.943-dist"
+		}
+	],
+	"settings": {}
+}
