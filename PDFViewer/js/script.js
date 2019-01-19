@@ -1,5 +1,5 @@
 var __ViewerFrame;
-var __ViewerDomain = "https://pdfviewer.kauffmann.nl";
+var __ViewerDomain = "https://bcpdfviewer.z6.web.core.windows.net/";
 
 function InitializeControl(controlId) {
     window.addEventListener("message", onMessage, false);
