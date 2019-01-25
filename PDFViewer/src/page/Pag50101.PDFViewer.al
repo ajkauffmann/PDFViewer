@@ -9,7 +9,12 @@ page 50101 "PDF Viewer"
             usercontrol(PDFViewer; PDFViewer)
             {
                 ApplicationArea = All;
-                trigger ControlAddInReady()
+                trigger OnControlAddInReady()
+                begin
+                    InitializePDFViewer();
+                end;
+
+                trigger OnPdfViewerReady()
                 begin
                     ControlIsReady := true;
                     ShowData();
@@ -22,6 +27,14 @@ page 50101 "PDF Viewer"
         ControlIsReady: Boolean;
         Data: JsonObject;
         DataType: Option URL,BASE64;
+
+    local procedure InitializePDFViewer()
+    var
+        PDFViewerSetup: Record "PDF Viewer Setup";
+    begin
+        PDFViewerSetup.GetRecord();
+        CurrPage.PDFViewer.InitializeControl(PDFViewerSetup."Web Viewer URL");
+    end;
 
     local procedure ShowData()
     begin

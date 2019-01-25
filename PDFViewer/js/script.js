@@ -1,12 +1,16 @@
 var __ViewerFrame;
-var __ViewerDomain = "https://bcpdfviewer.z6.web.core.windows.net";
+var __ViewerDomain;
 
-function InitializeControl(controlId) {
+function InitializeControl(url) {
+    __ViewerDomain = (function(url) {
+        var matches = url.match(/^(?:https?:\/\/)?(?:[^@\/\n]+@)?(?:www\.)?([^:\/?\n]+)/igm);
+        return matches[0];
+    }(url));
     window.addEventListener("message", onMessage, false);
-    var controlAddIn = document.getElementById(controlId);
+    var controlAddIn = document.getElementById('controlAddIn');
     controlAddIn.innerHTML = '<iframe id="viewer" style="border-style: none; margin: 0px; padding: 0px; height: 100%; width: 100%" allowFullScreen></iframe>'
     __ViewerFrame = document.getElementById('viewer');
-    __ViewerFrame.src = __ViewerDomain + "/web/viewer.html?file=";
+    __ViewerFrame.src = url;
 }
 
 function onMessage(event) {
@@ -23,7 +27,7 @@ function onMessage(event) {
 }
 
 function pdfViewerReady(message) {
-    Microsoft.Dynamics.NAV.InvokeExtensibilityMethod('ControlAddInReady', null);
+    Microsoft.Dynamics.NAV.InvokeExtensibilityMethod('OnPdfViewerReady', null);
 }
 
 function LoadDocument(data) {

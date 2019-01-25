@@ -7,6 +7,8 @@ controladdin PDFViewer
     RequestedHeight = 400;
     MaximumHeight = 1000; */
 
-    event ControlAddInReady();
+    event OnControlAddInReady();
+    event OnPdfViewerReady();
+    procedure InitializeControl(url: Text);
     procedure LoadDocument(data: JsonObject);
 }
