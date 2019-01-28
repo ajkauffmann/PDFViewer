@@ -10,5 +10,4 @@ iframe.style.maxHeight = 'none';
 iframe.style.minHeight = '400px';
 iframe.style.height = '99%';
 
-InitializeControl('controlAddIn');
-
+Microsoft.Dynamics.NAV.InvokeExtensibilityMethod('OnControlAddInReady', null);
