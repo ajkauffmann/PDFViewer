@@ -256,7 +256,14 @@ function webViewerLoad() {
   window.PDFViewerApplicationOptions = pdfjsWebAppOptions.AppOptions;
   pdfjsWebApp.PDFViewerApplication.run(config);
   // ## Business Central Integration ##
-  var evt = new Event("webviewerloaded", {"bubbles":true});
+  var ua = navigator.userAgent; 
+  var is_ie = ua.indexOf("MSIE ") > -1 || ua.indexOf("Trident/") > -1;/* MSIE used to detect old browsers and Trident used to newer ones*/
+  if (is_ie) {
+    var evt = document.createEvent("Event");
+    evt.initEvent("webviewerloaded",true,true);
+  } else {
+    var evt = new Event("webviewerloaded", {"bubbles":true});
+  }
   document.dispatchEvent(evt);
   // ##################################
 }
