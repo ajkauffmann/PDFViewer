@@ -1,11 +1,8 @@
 var __ViewerFrame;
-var __ViewerDomain;
+var __ViewerOrigin;
 
 function InitializeControl(url) {
-    __ViewerDomain = (function(url) {
-        var matches = url.match(/^(?:https?:\/\/)?(?:[^@\/\n]+@)?(?:www\.)?([^:\/?\n]+)/igm);
-        return matches[0];
-    }(url));
+    __ViewerOrigin = (new URL(url)).origin;
     window.addEventListener("message", onMessage, false);
     var controlAddIn = document.getElementById('controlAddIn');
     controlAddIn.innerHTML = '<iframe id="viewer" style="border-style: none; margin: 0px; padding: 0px; height: 100%; width: 100%" allowFullScreen></iframe>'
@@ -14,7 +11,7 @@ function InitializeControl(url) {
 }
 
 function onMessage(event) {
-    if (event.origin !== __ViewerDomain) {
+    if (event.origin !== __ViewerOrigin) {
         console.log('Blocked invalid cross-domain call');
         return;
     }
@@ -34,5 +31,5 @@ function LoadDocument(data) {
     __ViewerFrame.contentWindow.postMessage({
         'func': 'BCLoadDocument',
         'message': data
-    }, __ViewerDomain);
+    }, __ViewerOrigin);
 }
