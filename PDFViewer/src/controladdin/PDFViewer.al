@@ -3,9 +3,9 @@ controladdin PDFViewer
     StartupScript = 'js/startup.js';
     Scripts = 'js/script.js';
 
-    /* MinimumHeight = 400;
-    RequestedHeight = 400;
-    MaximumHeight = 1000; */
+    HorizontalStretch = true;
+    HorizontalShrink = true;
+    MinimumWidth = 250;
 
     event OnControlAddInReady();
     event OnPdfViewerReady();
