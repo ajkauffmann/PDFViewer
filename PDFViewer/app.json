@@ -2,22 +2,25 @@
   "id": "8334aa56-5106-406f-a49d-c916b49e0d26",
   "name": "PDF Viewer",
   "publisher": "Arend-Jan Kauffmann",
+  "version": "1.0.0.0",
   "brief": "",
   "description": "",
-  "version": "1.0.0.0",
   "privacyStatement": "",
   "EULA": "",
   "help": "",
   "url": "",
   "logo": "",
-  "capabilities": [],
   "dependencies": [],
   "screenshots": [],
-  "platform": "13.0.0.0",
-  "application": "13.0.0.0",
-  "idRange": {
-    "from": 50100,
-    "to": 50149
-  },
-  "runtime": "2.2"
+  "platform": "16.0.0.0",
+  "application": "16.0.0.0",
+  "idRanges": [
+    {
+      "from": 50300,
+      "to": 50310
+    }
+  ],
+  "contextSensitiveHelpUrl": "https://PDFViewer.com/help/",
+  "showMyCode": true,
+  "runtime": "5.0"
 }

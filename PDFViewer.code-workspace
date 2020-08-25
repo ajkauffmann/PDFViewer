@@ -4,7 +4,7 @@
 			"path": "PDFViewer"
 		},
 		{
-			"path": "pdfjs-2.0.943-dist"
+			"path": "pdfjs-2.5.207-dist"
 		}
 	],
 	"settings": {}

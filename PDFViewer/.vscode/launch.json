@@ -2,15 +2,23 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Publish: Your own server",
             "type": "al",
             "request": "launch",
-            "name": "Your own server",
-            "server": "http://bcsandbox",
-            "serverInstance": "NAV",
+            "server": "https://bcsandbox.docker.local",
+            "serverInstance": "BC",
             "authentication": "UserPassword",
-            "startupObjectId": 190,
-            "startupObjectType": "Page",
-            "breakOnError": true
+            "startupObjectId": 22,
+            "breakOnError": true,
+            "breakOnRecordWrite": false,
+            "launchBrowser": true,
+            "enableSqlInformationDebugger": true,
+            "enableLongRunningSqlStatements": true,
+            "longRunningSqlStatementsThreshold": 500,
+            "numberOfSqlStatements": 10,
+            "schemaUpdateMode": "Recreate"
         }
+        
+
     ]
 }
