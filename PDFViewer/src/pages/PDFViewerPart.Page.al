@@ -1,6 +1,7 @@
-page 50300 "PDF Viewer"
+page 50301 PDFViewerPart
 {
-    PageType = List;
+    PageType = CardPart;
+    Caption = 'PDF Viewer';
 
     layout
     {
@@ -26,24 +27,22 @@ page 50300 "PDF Viewer"
     var
         ControlIsReady: Boolean;
         Data: JsonObject;
-        ContentType: Option URL,BASE64;
-        Content: Text;
+        DataType: Option URL,BASE64;
 
     local procedure InitializePDFViewer()
     var
-        PDFViewerMgt: Codeunit PDFViewerMgt;
+        PDFViewerSetup: Codeunit PDFViewerSetup;
     begin
-        CurrPage.PDFViewer.InitializeControl(PDFViewerMgt.GetPdfViewerUrl());
+        CurrPage.PDFViewer.InitializeControl(PDFViewerSetup.GetPdfViewerUrl());
     end;
 
     local procedure ShowData()
     begin
-        if Content = '' then
+        if not ControlIsReady then
             exit;
 
-        Clear(Data);
-        Data.Add('type', Format(ContentType));
-        Data.Add('content', Content);
+        if not Data.Contains('content') then
+            exit;
 
         CurrPage.PDFViewer.LoadDocument(Data);
 
@@ -52,14 +51,17 @@ page 50300 "PDF Viewer"
 
     procedure LoadPdfViaUrl(Url: Text)
     begin
-        ContentType := ContentType::URL;
-        Content := Url;
+        Clear(Data);
+        Data.Add('type', 'url');
+        Data.Add('content', Url);
+        ShowData();
     end;
 
-    procedure LoadPdfFromBlob(Base64Data: Text)
+    procedure LoadPdfFromBase64(Base64Data: Text)
     begin
-        ContentType := ContentType::BASE64;
-        Content := Base64Data;
+        Clear(Data);
+        Data.Add('type', 'base64');
+        Data.Add('content', Base64Data);
+        ShowData();
     end;
-
 }

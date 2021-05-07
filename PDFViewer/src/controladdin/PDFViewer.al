@@ -1,7 +1,7 @@
 controladdin PDFViewer
 {
-    StartupScript = 'js/startup.js';
-    Scripts = 'js/script.js';
+    StartupScript = 'src/controladdin/js/startup.js';
+    Scripts = 'src/controladdin/js/script.js';
 
     HorizontalStretch = true;
     HorizontalShrink = true;

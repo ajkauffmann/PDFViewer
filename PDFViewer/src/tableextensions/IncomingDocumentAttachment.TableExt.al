@@ -1,24 +1,18 @@
-tableextension 50300 "Incoming Document Attach Ext." extends "Incoming Document Attachment" // 133
+tableextension 50300 IncomingDocumentAttachExt extends "Incoming Document Attachment"
 {
-    procedure ViewAttachment()
-    var
-        PdfViewer: Page "PDF Viewer";
+    procedure ViewAttachment(Popup: Boolean)
     begin
         case Type of
             Type::PDF:
-                ViewInPdfViewer();
+                ViewInPdfViewer(Popup);
         end;
     end;
 
-    procedure ViewInPdfViewer()
+    procedure ViewInPdfViewer(Popup: Boolean)
     var
-        PdfViewer: Page "PDF Viewer";
+        OpenPdfViewerMeth: Codeunit OpenPdfViewerMeth;
     begin
-        if Type <> Type::PDF then
-            exit;
-
-        PdfViewer.LoadPdfFromBlob(ToBase64String());
-        PdfViewer.Run();
+        OpenPdfViewerMeth.OpenPdfViewer(Rec, Rec.FieldNo(Content), Popup);
     end;
 
     procedure ToBase64String() ReturnValue: Text
@@ -32,5 +26,4 @@ tableextension 50300 "Incoming Document Attach Ext." extends "Incoming Document 
         Content.CreateInStream(InStr);
         ReturnValue := Base64Convert.ToBase64(InStr);
     end;
-
 }
